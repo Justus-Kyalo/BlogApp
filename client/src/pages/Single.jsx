@@ -2,7 +2,12 @@ import React from 'react'
 
 const Single = () => {
   return (
-    <div>Single</div>
+    <div className="Single">
+      <div className="content">
+        <input type="file" />
+
+      </div>
+    </div>
   )
 }
 
