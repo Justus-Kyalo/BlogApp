@@ -48,6 +48,7 @@ body {
           padding: 1rem;
           border: none;
           border-bottom: 1px solid gray;
+          outline: none;
         }
         button {
           color: white;
@@ -104,6 +105,7 @@ body {
             justify-content: center;
             align-items: center;
             font-weight: 300;
+            transition: 0.3s;
 
             &:hover {
               color: teal;
@@ -180,7 +182,6 @@ body {
           button {
             width: max-content;
             padding: 10px 20px;
-            border: none;
             cursor: pointer;
             background-color: white;
             border: 1px solid teal;
