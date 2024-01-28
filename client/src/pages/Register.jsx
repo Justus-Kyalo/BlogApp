@@ -8,18 +8,23 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setError("")
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const res = await axios.post("http://localhost:8800/api/auth/register",inputs)
+    try {
+      const res = await axios.post(
+        "http://localhost:8800/api/auth/register",
+        inputs
+      );
 
       console.log(res);
-      
-    }catch(err){ 
+    } catch (err) {
+      setError(err.message);
       console.log(err.message);
     }
   };
@@ -51,7 +56,7 @@ const Register = () => {
         />
         <button type="submit">Register</button>
         <div>
-          <p>This is an error</p>
+          <p>{error}</p>
           <span>
             Dont you have an account ?<Link to="/login">Login</Link>
           </span>
