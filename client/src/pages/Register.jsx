@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
@@ -8,10 +8,12 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setError("")
+    setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -21,11 +23,9 @@ const Register = () => {
         "http://localhost:8800/api/auth/register",
         inputs
       );
-
-      console.log(res);
+      navigate("/login");
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
     }
   };
 
@@ -56,7 +56,7 @@ const Register = () => {
         />
         <button type="submit">Register</button>
         <div>
-          <p>{error}</p>
+          {error && <p>User already exists</p>}
           <span>
             Dont you have an account ?<Link to="/login">Login</Link>
           </span>
