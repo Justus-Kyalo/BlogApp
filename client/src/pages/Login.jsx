@@ -24,7 +24,7 @@ const Login = () => {
       );
       navigate("/");
     } catch (err) {
-      setError(err.message);
+      setError(err.response.data);
     }
   };
   return (
@@ -45,7 +45,7 @@ const Login = () => {
         />
         <button type="submit">Login</button>
         <div>
-          {error && <p>Invalid username or password</p>}
+          {error && <p>{error}</p>}
           <span>
             Dont you have an account ?<Link to="/register">Register</Link>
           </span>

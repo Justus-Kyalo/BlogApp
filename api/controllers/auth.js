@@ -28,33 +28,17 @@ export const login = (req, res) => {
 
   db.query(q, [req.body.username], (err, data) => {
     if (err) res.json(err);
-    if (!data.length) return res.status(404).json("User not found");
+    if (data.length === 0) return res.status(404).json("User not found");
 
     const hashedPwd = data[0].password;
     const match = bcrypt.compareSync(req.body.password, hashedPwd);
     if (!match) return res.status(404).json("User not found");
     const token = jwt.sign({ id: data[0].id }, "jwtkey");
-    const { password, ...others } = data[0];
+    const { password, ...other } = data[0];
     res
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
-      .json(others);
-    // if (data.length) {
-    //   const hashedPwd = data[0].password;
-    //   const match = bcrypt.compareSync(req.body.password, hashedPwd);
-
-    //   const token = jwt.sign({ id: data[0].id }, "jwtkey");
-    //   const { password, ...others } = data[0];
-    //   res
-    //     .cookie("access_token", token, { httpOnly: true })
-    //     .status(200)
-    //     .json(others);
-    //   if (match) {
-    //     return res.status(200).json(data);
-    //   } else {
-    //     return res.status(400).json({ message: "Wrong username or password" });
-    //   }
-    // }
+      .json(other);
   });
 };
 
