@@ -1,6 +1,7 @@
 import { db } from "../db.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+
 export const register = (req, res) => {
   //check esisting user
 
@@ -30,7 +31,7 @@ export const login = (req, res) => {
 
   db.query(q, [req.body.username], (err, data) => {
     if (err) return res.status(500).json(err);
-    if (data.length === 0) return res.status(404).json("User not found!");
+    if (!data.length) return res.status(404).json("User not found!");
 
     //Check password
     const isPasswordCorrect = bcrypt.compareSync(
