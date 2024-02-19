@@ -3,12 +3,16 @@ import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 const Navbar = () => {
-  const { currentUser,logOut } = useContext(AuthContext);
+  const { currentUser, logOut } = useContext(AuthContext); //currentUser contains information about a user after login excluding password
+  console.log(currentUser);
   return (
     <div className="Navbar">
       <div className="container ">
         <div className="logo">
-          <img src={Logo} alt="logo" />
+          <Link to="/">
+            {" "}
+            <img src={Logo} alt="logo" />
+          </Link>
         </div>
         <div className="links">
           <Link to="/?cat=art" className="link">
