@@ -32,7 +32,7 @@ const Write = () => {
 
     try {
       state
-        ? await axios.put(`http://localhost:8800/api/posts${state.id}`, {
+        ? await axios.put(`http://localhost:8800/api/posts/${state.id}`, {
             title,
             desc: value,
             cat,
@@ -124,8 +124,7 @@ const Write = () => {
               checked={cat === "technology"}
               name="cat"
               value="technology"
-              id="technol
-              ogy"
+              id="technology"
               onChange={(e) => setCat(e.target.value)}
             />
             <label htmlFor="technology">Technology</label>
