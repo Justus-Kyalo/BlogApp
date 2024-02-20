@@ -58,7 +58,7 @@ const Single = () => {
           )}
         </div>
         <h1>{post?.title}</h1>
-        <p>{post?.description}</p>
+        <p>{post?.desc}</p>
       </div>
       <Menu cat={post.cat} />
     </div>
