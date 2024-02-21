@@ -1,21 +1,25 @@
 $lightGreen: #b9e7e7;
+$bluishGray: rgb(96, 119, 124);
+$grayishBrown: rgb(163, 153, 145);
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
 html,
 body {
   scroll-behavior: smooth;
 }
+
 .App {
   display: flex;
   justify-content: center;
 
   .container {
-    max-width: 1024px;
     width: 100%;
-    padding: 1rem;
+    background-color: $grayishBrown;
 
     .link {
       text-decoration: none;
@@ -29,7 +33,7 @@ body {
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-color: $lightGreen;
+      background-color: $bluishGray;
 
       h1 {
         font-size: 20px;
@@ -54,7 +58,8 @@ body {
           color: white;
           background-color: teal;
           border: none;
-          padding: 0.5rem;
+          padding: 0.7rem;
+          font-size: 1.2rem;
         }
         div {
           p {
@@ -72,11 +77,20 @@ body {
 
     //NAVBAR
     .Navbar {
-      .container {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      background-color: $bluishGray;
+      z-index: 10;
+
+      .nav-contents {
+        max-width: 1200px;
+        margin: auto;
         display: flex;
         justify-content: space-between;
-        padding: 10px 0;
+        padding: 1.5rem 1rem 1.5rem 1rem;
         align-items: center;
+        background-color: $bluishGray;
 
         .logo {
           img {
@@ -84,15 +98,20 @@ body {
           }
         }
 
-        .links {
+        .categories {
           display: flex;
-          align-items: center;
-          gap: 10px;
+          gap: 25px;
 
           h6 {
             font-size: 0.9rem;
             font-weight: 300;
           }
+        }
+
+        .links {
+          display: flex;
+          align-items: center;
+          gap: 25px;
           span {
             cursor: pointer;
           }
@@ -120,55 +139,52 @@ body {
     footer {
       margin-top: 100px;
       padding: 20px;
-      background-color: $lightGreen;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      img {
-        width: 100px;
-        border-radius: 3px;
+      background-color: $bluishGray;
+      .footer-container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+
+        img {
+          width: 100px;
+          border-radius: 3px;
+        }
       }
     }
 
     //HOME
     .posts {
-      margin-top: 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 150px;
+      max-width: 1200px;
+      margin: auto;
+      margin-top: 6rem;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
 
       .post {
         display: flex;
-        gap: 100px;
+        gap: 1rem;
+        padding: 1rem;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
 
-        &:nth-child(2n + 1) {
-          flex-direction: row-reverse;
+        &:hover {
+          box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.2);
         }
 
         .img {
-          flex: 2;
-          position: relative;
-
-          &::after {
-            content: "";
-            width: 100%;
-            height: 100%;
-            background-color: $lightGreen;
-            position: absolute;
-            top: 20px;
-            left: -20px;
-            z-index: -1;
-          }
-
           img {
-            width: 100%;
-            max-height: 300px;
+            height: 100%;
+            max-width: 200px;
             object-fit: cover;
+            border-radius: 3px;
           }
         }
         .content {
-          flex: 3;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -179,19 +195,24 @@ body {
           p {
             font-style: 18px;
           }
-          button {
-            width: max-content;
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: white;
-            border: 1px solid teal;
-            color: teal;
-            transition: 0.3s;
+          .btn {
+            text-align: right;
+            button {
+              width: max-content;
+              padding: 12px 20px;
+              border-radius: 3px;
+              font-size: 1rem;
+              cursor: pointer;
+              background-color: white;
+              border: 1px solid teal;
+              color: teal;
+              transition: 0.3s;
 
-            &:hover {
-              background-color: $lightGreen;
-              border: 1px solid white;
-              color: black;
+              &:hover {
+                background-color: $lightGreen;
+                border: 1px solid white;
+                color: black;
+              }
             }
           }
         }
@@ -200,6 +221,9 @@ body {
     //Single
 
     .Single {
+      max-width: 1200px;
+      margin: auto;
+      margin-top: 7rem;
       display: flex;
       gap: 50px;
       .content {
@@ -209,7 +233,7 @@ body {
         gap: 30px;
         img {
           width: 100%;
-          height: 300px;
+          max-height: 400px;
           object-fit: cover;
         }
         .user {
@@ -263,7 +287,7 @@ body {
           gap: 10px;
 
           img {
-            height: 200px;
+            max-height: 350px;
             width: 100%;
             object-fit: cover;
           }
@@ -290,22 +314,28 @@ body {
     }
     //WRITE
     .Write {
-      margin-top: 20px;
+      max-width: 1200px;
+      margin: auto;
+      margin-top: 10rem;
       display: flex;
       gap: 20px;
+      height: 100vh;
+      padding: 1rem;
 
       .content {
         flex: 5;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        max-height: 60vh;
 
         input {
           padding: 10px;
           border: 1px solid lightgray;
         }
         .editorContainer {
-          height: 300px;
+          background-color: rgb(255, 255, 255);
+          height: 400px;
           overflow: scroll;
           border: 1px solid lightgray;
 
@@ -320,6 +350,7 @@ body {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        max-height: 50vh;
 
         .item {
           border: 1px solid lightgray;
@@ -363,6 +394,28 @@ body {
             align-items: center;
             color: teal;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    .container .posts {
+      grid-template-columns: 1fr;
+
+      .post {
+        flex-direction: column;
+
+        .img {
+          margin: auto;
+          img {
+            max-width: 300px;
+          }
+        }
+        .content {
+          gap: 1rem;
         }
       }
     }
