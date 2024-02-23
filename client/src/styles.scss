@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 $lightGreen: #b9e7e7;
 $bluishGray: rgb(96, 119, 124);
 $grayishBrown: rgb(163, 153, 145);
@@ -19,7 +20,7 @@ body {
 
   .container {
     width: 100%;
-    background-color: $grayishBrown;
+    background-color: white;
 
     .link {
       text-decoration: none;
@@ -82,19 +83,20 @@ body {
       top: 0;
       background-color: $bluishGray;
       z-index: 10;
+      font-family: "Montserrat", sans-serif;
 
       .nav-contents {
         max-width: 1200px;
         margin: auto;
         display: flex;
         justify-content: space-between;
-        padding: 1.5rem 1rem 1.5rem 1rem;
+        //padding: 1.5rem 1rem 1.5rem 1rem;
         align-items: center;
         background-color: $bluishGray;
 
         .logo {
           img {
-            height: 45px;
+            height: 100px;
           }
         }
 
@@ -103,8 +105,10 @@ body {
           gap: 25px;
 
           h6 {
-            font-size: 0.9rem;
-            font-weight: 300;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgb(61, 61, 61, 0.8);
+            line-height: 40px;
           }
         }
 
@@ -114,6 +118,9 @@ body {
           gap: 25px;
           span {
             cursor: pointer;
+            color: rgb(61, 61, 61, 0.8);
+            font-size: 0.9rem;
+            font-weight: 600;
           }
           .write {
             background-color: $lightGreen;
@@ -140,6 +147,10 @@ body {
       margin-top: 100px;
       padding: 20px;
       background-color: $bluishGray;
+      // position: absolute;
+      // bottom: 0;
+      // left: 0;
+      // right: 0;
       .footer-container {
         max-width: 1200px;
         margin: auto;
@@ -157,6 +168,7 @@ body {
 
     //HOME
     .posts {
+      font-family: "Open Sans", sans-serif;
       max-width: 1200px;
       margin: auto;
       margin-top: 6rem;
@@ -177,23 +189,29 @@ body {
         }
 
         .img {
+          flex: 1;
           img {
             height: 100%;
             max-width: 200px;
+            max-height: 200px;
+            width: 100%;
             object-fit: cover;
             border-radius: 3px;
           }
         }
         .content {
           display: flex;
+          flex: 2;
           flex-direction: column;
           justify-content: space-between;
+          color: rgb(97, 97, 97);
 
-          h1 {
-            font-style: 48px;
-          }
+          // h1 {
+          // //    font-style: 48px;
+          // // }
           p {
-            font-style: 18px;
+            // font-size: 18px;
+            text-align: justify;
           }
           .btn {
             text-align: right;
