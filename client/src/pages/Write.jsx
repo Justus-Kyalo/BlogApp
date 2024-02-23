@@ -37,14 +37,30 @@ const Write = () => {
             desc: value,
             cat,
             img: file ? imgUrl : "",
+          }, {
+            withCredentials: true,
+              headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+              },
           })
-        : await axios.post(`http://localhost:8800/api/posts`, {
-            title,
-            desc: value,
-            cat,
-            img: file ? imgUrl : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
+        : await axios.post(
+            `http://localhost:8800/api/posts`,
+            {
+              title,
+              desc: value,
+              cat,
+              img: file ? imgUrl : "",
+              date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            },
+            {
+              withCredentials: true,
+              headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+              },
+            }
+          );
     } catch (err) {
       console.log(err);
     }
